@@ -30,7 +30,7 @@ message-relay/
 ├── templates/
 │   ├── index.html          
 │   └── show_messages.html  
-├── messages.db              (auto-created)
+├── messages.db             
 ├── requirements.txt        
 ├── .env                     
 ├── .gitignore              
@@ -68,7 +68,6 @@ pip install -r requirements.txt
 WEBHOOK_URL=https://discord.com/api/webhooks/your_webhook_url_here
 ```
 
-> ❗ **Do not commit your `.env` file** — it's excluded by `.gitignore`.
 
 ### 5. Run the app
 
@@ -98,36 +97,7 @@ Then open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 - Flask  
 - SQLite3  
 - Discord Webhooks  
-- HTML + CSS (Orbitron font, dark UI)  
-- `python-dotenv` for environment configuration  
+- HTML + CSS 
 
 ---
 
-## ✅ Example `.gitignore`
-
-```
-# Python environment
-.venv/
-__pycache__/
-*.pyc
-
-# Secret config
-.env
-
-# Local database
-messages.db
-```
-
----
-
-## 🙋 Made by
-
-**Fadi7AY**  
-GitHub: [https://github.com/Fadi7AY](https://github.com/Fadi7AY)
-
----
-
-## 🛡️ License
-
-This project is licensed under the MIT License.  
-You are free to use, modify, and distribute it for personal and commercial purposes.
