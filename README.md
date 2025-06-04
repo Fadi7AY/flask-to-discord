@@ -26,15 +26,15 @@ A simple and stylish Flask web application that allows users to:
 
 ```
 message-relay/
-├── app.py                 # Flask app logic
+├── app.py                  
 ├── templates/
-│   ├── index.html         # Main UI with form + recent messages
-│   └── show_messages.html # View-only message log
-├── messages.db            # SQLite3 database (auto-created)
-├── requirements.txt       # Python dependencies
-├── .env                   # Webhook secrets (not committed)
-├── .gitignore             # Files to ignore
-└── README.md              # You are here
+│   ├── index.html          
+│   └── show_messages.html  
+├── messages.db              (auto-created)
+├── requirements.txt        
+├── .env                     
+├── .gitignore              
+└── README.md              
 ```
 
 ---
