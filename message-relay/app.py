@@ -84,9 +84,14 @@ def get_messages():
     rows = cursor.fetchall()
 
     conn.close()
+    if request.headers.get('Accept') == 'application/json':
+        messages = [
+            {"id": row["id"], "content": row["content"], "timestamp": row["timestamp"]}
+            for row in rows
+        ]
+        return jsonify(messages)
 
 
-    
     return render_template('index.html',msg=rows)
 
 
