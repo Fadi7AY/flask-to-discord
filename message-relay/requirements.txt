@@ -1,0 +1,4 @@
+Flask
+discord-webhook
+datetime
+dotenv
