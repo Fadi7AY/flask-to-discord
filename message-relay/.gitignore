@@ -4,3 +4,5 @@ messages.db
 __pycache__/
 *.pyc
 *.log
+reflections.md
+reflections*

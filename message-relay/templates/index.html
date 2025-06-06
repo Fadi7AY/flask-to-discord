@@ -1,143 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Message Relay</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Orbitron', sans-serif;
-            background-color: #1e1e2f;
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-            background-repeat: repeat;
-            color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            position: relative;
-            z-index: 1;
-        }
+  <meta charset="UTF-8" />
+  <title>Message Relay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #1e1e2f;
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+      background-repeat: repeat;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
 
-        .watermark {
-            position: fixed;
-            top: 40px;
-            left: 40px;
-            opacity: 0.03;
-            z-index: 0;
-        }
+    .watermark {
+      position: fixed;
+      top: 40px;
+      left: 40px;
+      opacity: 0.03;
+      z-index: 0;
+    }
 
-        h1 {
-            color: #61dafb;
-            z-index: 1;
-            text-shadow: 0 0 8px #61dafb;
-        }
+    h1 {
+      color: #61dafb;
+      z-index: 1;
+      text-shadow: 0 0 8px #61dafb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        form {
-            background-color: #2a2a3f;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 500px;
-            z-index: 1;
-        }
+    .message-form {
+      position: relative;
+      padding: 2.5rem;
+      background-color: #2a2a3f;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 500px;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-        label {
-            display: block;
-            margin-top: 1rem;
-            font-weight: bold;
-        }
+    .icon-grid .emoji {
+  position: absolute;
+  font-size: 28px;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
 
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin-top: 0.5rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #3a3a55;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-        }
+.icon-grid img {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
 
-        input[type="submit"] {
-            margin-top: 1.5rem;
-            background-color: #61dafb;
-            color: #1e1e2f;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-family: 'Orbitron', sans-serif;
-        }
+    /* .icon-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.08;
+      pointer-events: none;
+    } */
 
-        input[type="submit"]:hover {
-            background-color: #4ec3e0;
-        }
+    .icon-grid img {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
 
-        .msg-log {
-            margin-top: 2rem;
-            max-width: 600px;
-            width: 90%;
-            z-index: 1;
-        }
+    label,
+    textarea,
+    input[type='submit'] {
+      position: relative;
+      z-index: 2;
+    }
 
-        .msg-item {
-            background: #33334d;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            border-left: 5px solid #61dafb;
-        }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
 
-        .footer {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            color: #888;
-            font-size: 0.9rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-    </style>
+    textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #3a3a55;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+      resize: none;
+    }
+
+    input[type='submit'] {
+      margin-top: 1.5rem;
+      background-color: #61dafb;
+      color: #1e1e2f;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    input[type='submit']:hover {
+      background-color: #4ec3e0;
+    }
+
+    .msg-log {
+      margin-top: 2rem;
+      max-width: 600px;
+      width: 90%;
+      z-index: 1;
+    }
+
+    .msg-item {
+      background: #33334d;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      border-left: 5px solid #61dafb;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      color: #888;
+      font-size: 0.9rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Background watermark -->
-    <div class="watermark">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" width="300" alt="Discord Watermark">
+  <!-- Background watermark -->
+  <div class="watermark">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" width="300" alt="Discord Watermark" />
+  </div>
+
+  <!-- Discord logo -->
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Logo" width="80" style="margin-bottom: 10px; z-index: 1" />
+
+  <h1>Send a Message to Discord</h1>
+
+  <form method="POST" action="/input_text" class="message-form">
+    <!-- inside .message-form -->
+<div class="icon-grid">
+  <!-- Row 1 - odd columns -->
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" style="top: 5%; left: 5%;">
+  <span class="emoji" style="top: 5%; left: 25%;">🕹️</span>
+  <span class="emoji" style="top: 5%; left: 45%;">⚔️</span>
+  <span class="emoji" style="top: 5%; left: 65%;">🎧</span>
+  <span class="emoji" style="top: 5%; left: 85%;">🏀</span>
+
+  <!-- Row 2 - even columns -->
+  <span class="emoji" style="top: 25%; left: 15%;">𖦏</span>
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" style="top: 25%; left: 35%;">
+  <span class="emoji" style="top: 25%; left: 55%;">🎲</span>
+  <span class="emoji" style="top: 25%; left: 75%;">⚡</span>
+  <span class="emoji" style="top: 25%; left: 95%;">🕹️</span>
+
+  <!-- Row 3 - odd columns -->
+  <span class="emoji" style="top: 50%; left: 5%;">⚔️</span>
+  <span class="emoji" style="top: 50%; left: 25%;">🎧</span>
+  <span class="emoji" style="top: 50%; left: 45%;">🏀</span>
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" style="top: 50%; left: 65%;">
+  <span class="emoji" style="top: 50%; left: 85%;">𖦏</span>
+
+  <!-- Row 4 - even columns -->
+  <span class="emoji" style="top: 75%; left: 15%;">🎲</span>
+  <span class="emoji" style="top: 75%; left: 35%;">⚡</span>
+  <span class="emoji" style="top: 75%; left: 55%;">🕹️</span>
+  <span class="emoji" style="top: 75%; left: 75%;">⚔️</span>
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" style="top: 75%; left: 95%;">
+</div>
+
+
+
+    <!-- Form fields -->
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="4" placeholder="Type your message..." required></textarea>
+    <input type="submit" value="Send" />
+  </form>
+
+  {% if msg %}
+  <div class="msg-log">
+    <h2>Recent Messages</h2>
+    {% for row in msg|reverse %}
+    <div class="msg-item">
+      <strong>{{ row.timestamp }}:</strong>
+      <p>{{ row.content }}</p>
     </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
-    <!-- Discord logo -->
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Logo" width="80" style="margin-bottom: 10px; z-index:1;">
-
-    <h1>Send a Message to Discord</h1>
-
-    <form method="POST" action="/input_text">
-        <label for="message">Message</label>
-        <textarea name="message" id="message" rows="4" placeholder="Type your message..." required></textarea>
-        <input type="submit" value="Send">
-    </form>
-
-    {% if msg %}
-    <div class="msg-log">
-        <h2>Recent Messages</h2>
-        {% for row in msg|reverse %}
-            <div class="msg-item">
-                <strong>{{ row.timestamp }}:</strong>
-                <p>{{ row.content }}</p>
-            </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    <!-- Footer credit -->
-    <div class="footer">
-        Made by: Fadi7AY
-    </div>
-
+  <div class="footer">
+    Made by: Fadi7AY
+  </div>
 </body>
 </html>
