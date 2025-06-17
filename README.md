@@ -44,7 +44,7 @@ message-relay/
 ### 1. Clone the project
 
 ```bash
-git clone https://github.com/your-username/message-relay.git
+git clone https://github.com/Fadi7AY/flask-to-discord.git
 cd message-relay
 ```
 
