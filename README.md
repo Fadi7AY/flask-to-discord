@@ -10,6 +10,17 @@ A simple and stylish Flask web application that allows users to:
 
 ---
 
+## At a glance
+
+```mermaid
+flowchart LR
+    Form["Web form"] --> Flask["Flask · message relay"]
+    Flask --> Discord["Discord webhook"]
+    Flask --> DB["SQLite · messages"]
+    DB --> History["Recent messages · HTML and JSON"]
+```
+
+
 ## 🚀 Features
 
 - Flask backend with clean routing  
@@ -45,7 +56,7 @@ message-relay/
 
 ```bash
 git clone https://github.com/Fadi7AY/flask-to-discord.git
-cd message-relay
+cd flask-to-discord/message-relay
 ```
 
 ### 2. Create a virtual environment
@@ -100,4 +111,3 @@ Then open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 - HTML + CSS 
 
 ---
-
